@@ -18,11 +18,6 @@ namespace datingApp.Extensions
                 option.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
 
-            // Add CORS
-            services.AddCors();
-
-            services.AddScoped<ITokenService, TokenService>();
-
             return services;
         }
         

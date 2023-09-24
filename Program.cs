@@ -27,10 +27,10 @@ builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
 // Using Cors Authentication
-app.UseCors(builder => builder.AllowAnyHeader().WithOrigins("http://localhost:4200"));
+builder.Services.AddCors();
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
-app.UseAuthentication();
-app.UseAuthorization();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,7 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
