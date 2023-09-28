@@ -15,12 +15,12 @@ using datingApp.Interfaces;
 
 namespace datingApp.Controllers
 {
-    public class AccoutController : BaseApiController
+    public class AccountController : BaseApiController
     {
-        public AccoutController(DataContext context, ITokenService tokenService) : base(context, tokenService){}
+        public AccountController(DataContext context, ITokenService tokenService) : base(context, tokenService){}
 
         // Register
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register(RegisterDTOs registerDTO)
         {
             // User Name is it valid?
